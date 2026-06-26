@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Special For Chanchal</title>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; background-color: #fff0f5; text-align: center; padding: 20px; color: #333; }
+        .page { display: none; margin-top: 50px; }
+        .active { display: block; }
+        input, button { padding: 15px; margin: 10px; border-radius: 10px; border: 1px solid #ffb6c1; font-size: 16px; width: 80%; max-width: 300px; }
+        button { background-color: #ff6f91; color: white; border: none; cursor: pointer; transition: 0.3s; font-weight: bold; }
+        button:hover { background-color: #ff4775; }
+        .red { background-color: #ff4d4d !important; }
+        .green { background-color: #28a745 !important; }
+        .error { color: #d9534f; font-weight: bold; margin-top: 15px; }
+        .msg { font-size: 18px; margin: 20px; line-height: 1.6; }
+    </style>
+</head>
+<body>
+
+    <!-- Page 1: Password -->
+    <div id="p1" class="page active">
+        <h2>Madam G, Password bataiye?</h2>
+        <input type="number" id="pass1" placeholder="6 Digit Password">
+        <br>
+        <button onclick="checkPass1()">Submit</button>
+        <p id="err1" class="error"></p>
+    </div>
+
+    <!-- Page 2: Shayari -->
+    <div id="p2" class="page">
+        <h2>For my August Girls</h2>
+        <p class="msg">Tu haseen, teri Aakhe Haseen, Tere gaal haseen, tere baal haseen,<br>
+        Haseen teri har baat hai 💗,<br>
+        Aata to mujhe kuch nhi par<br>
+        itna likh dia kya ye choti baat hai 😂</p>
+        <button onclick="nextPage('p3')">Next dabaye madam G</button>
+    </div>
+
+    <!-- Page 3: Name Password -->
+    <div id="p3" class="page">
+        <h3>Hint: Meri Pasndida Aurat ka Naam 💗</h3>
+        <input type="text" id="pass2" placeholder="Enter Name">
+        <br>
+        <button onclick="checkPass2()">Check</button>
+        <p id="err2" class="error"></p>
+    </div>
+
+    <!-- Page 4: Choices -->
+    <div id="p4" class="page">
+        <h3>👉👈 I love you yrr a 10000 Timess 😁💗</h3>
+        <button id="opt1" onclick="selectOpt('ok')">Tum pyare ho yr love you 💗🫶</button><br>
+        <button id="opt2" onclick="selectOpt('no')">Chal be Nikal yha se 😡</button><br>
+        <button id="opt3" onclick="selectOpt('no')">Tu Khatam hai merse ajj</button><br>
+        <button id="opt4" onclick="selectOpt('no')">200 sal bad reply karungi 😏</button>
+        <p id="choiceMsg" style="margin-top: 20px; font-weight: bold;"></p>
+        <button id="finalBtn" style="display:none; background-color: #4CAF50;" onclick="nextPage('p5')">Next Page</button>
+    </div>
+
+    <!-- Page 5: Commitment -->
+    <div id="p5" class="page">
+        <p class="msg">Dekho Madam G saf saf kheta hu Tum merii ho or sirff meri 😌 or me Pagal jarur hu thoda par Tumhara hi hu bas . Abb tum ha to Phle hi bol chuki ho to Jhelo jesa bhi hu 😁😋😂😂💗. But yr Life tumhari bhut entertaining ban jayegi ye yaad rakhna ❤️🫶💗.</p>
+        <a href="https://youtube.com/shorts/kXxdF-tJAcw?si=xIbVdLild_SuG7m3" target="_blank">
+            <button style="background-color: #ff0000;">Video Dekho Madam G 🎥</button>
+        </a>
+    </div>
+
+    <script>
+        function nextPage(id) {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            document.getElementById(id).classList.add('active');
+        }
+
+        function checkPass1() {
+            if(document.getElementById('pass1').value === "212008") nextPage('p2');
+            else {
+                const msgs = ["Try again madam Ji", "Ohh noo firse try kro yrr", "iss bar to shi dalogi pakka 😁", "Koi na ek or try karlo"];
+                document.getElementById('err1').innerText = msgs[Math.floor(Math.random() * msgs.length)];
+            }
+        }
+
+        function checkPass2() {
+            const input = document.getElementById('pass2').value.toLowerCase().trim();
+            if(input === "chanchal yadav") nextPage('p4');
+            else document.getElementById('err2').innerText = "Oh madam ji apna hi name bhul gyi Yadav kon likhega 🤦";
+        }
+
+        function selectOpt(type) {
+            if(type === 'ok') {
+                document.getElementById('opt1').classList.add('green');
+                document.getElementById('choiceMsg').innerText = "aare mujhe to pta hi tha 💗😁 tum to meri hi kismat me likhi ho or nhi bhi likhi to likh dunga yr 💗😋🫶";
+                document.getElementById('finalBtn').style.display = "inline-block";
+            } else {
+                event.target.classList.add('red');
+                document.getElementById('choiceMsg').innerText = "IAS banke badla lunga😔";
+            }
+        }
+    </script>
+</body>
+</html>
